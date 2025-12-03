@@ -4,6 +4,7 @@ import cors from 'cors';
 
 import authRoutes from './routes/auth.routes.js';
 import usersRoutes from './routes/users.routes.js';
+import swapiRoutes from './routes/swapi.routes.js';
 
 const app = express();
 
@@ -12,12 +13,15 @@ app.use(express.json());
 
 // Ping simple
 app.get('/', (req, res) => {
-  res.json({ message: 'API ExamenRegu funcionando (Etapa 1)' });
+  res.json({ message: 'API examen_regu funcionando' });
 });
 
 // Rutas
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', usersRoutes);
+
+//swapi routes
+app.use('/examen/api/v1', swapiRoutes);
 
 // 404
 app.use((req, res) => {
