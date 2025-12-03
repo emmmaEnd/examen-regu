@@ -63,7 +63,7 @@ export async function register(req, res) {
     const { email, password, full_name, phone, role } = req.body;
 
     if (!email || !password || !full_name) {
-      return res.status(400).json({ message: 'email, password y full_name son obligatorios' });
+      return res.status(400).json({ message: 'email, password y nombre son obligatorios' });
     }
 
     const existing = await findUserByEmail(email);
@@ -82,7 +82,7 @@ export async function register(req, res) {
       last_access: user.last_access,
     });
   } catch (error) {
-    console.error('Error en register:', error);
+    console.error('Error en registrarse:', error);
     return res.status(500).json({ message: 'Error interno en registro' });
   }
 }
